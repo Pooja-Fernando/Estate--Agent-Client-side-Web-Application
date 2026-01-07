@@ -1,4 +1,6 @@
-function SearchPage({propersties}){
+import React,{useState} from'react';
+import  SearchForm from '../components/SearchForm';
+export function SearchPage({propersties}){
     const [searcxhCriteria, setSearchCriteria]=useState({});
     const filteredProperties = properties.filter(property => {
   // Check type
