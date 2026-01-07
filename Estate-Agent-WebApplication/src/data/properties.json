@@ -62,8 +62,7 @@
       "/images/properties/house2-7.jpg",
       "/images/properties/house2-8.jpg"
     ],
-    "floorPlan": "/images/properties/house2-floorplan.jpg",
-    
+   
   },
   {
     "id": 4,
@@ -83,7 +82,7 @@
       "/images/properties/flat2-5.jpg",
       "/images/properties/flat2-6.jpg"
     ],
-    "floorPlan": "/images/properties/flat2-floorplan.jpg",
+   
    
   },
   {
@@ -105,7 +104,7 @@
       "/images/properties/house3-6.jpg",
       "/images/properties/house3-7.jpg"
     ],
-    "floorPlan": "/images/properties/house3-floorplan.jpg",
+   
     
   },
   {
@@ -128,7 +127,7 @@
       "/images/properties/flat3-7.jpg",
       "/images/properties/flat3-8.jpg"
     ],
-    "floorPlan": "/images/properties/flat3-floorplan.jpg",
+    
    
   },
   {
@@ -149,7 +148,7 @@
       "/images/properties/house4-5.jpg",
       "/images/properties/house4-6.jpg"
     ],
-    "floorPlan": "/images/properties/house4-floorplan.jpg",
+    
    
   }
 ]

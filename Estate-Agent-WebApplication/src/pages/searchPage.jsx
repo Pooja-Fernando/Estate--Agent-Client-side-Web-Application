@@ -1,7 +1,8 @@
 import React,{useState} from'react';
 import  SearchForm from '../components/SearchForm';
-export function SearchPage({propersties}){
-    const [searcxhCriteria, setSearchCriteria]=useState({});
+import PropertiesData from '.data/properties.json';
+export function SearchPage({properties}){
+    const [searchCriteria, setSearchCriteria]=useState({});
     const filteredProperties = properties.filter(property => {
   // Check type
     if (criteria.type !== "any" && property.type !== criteria.type) {
