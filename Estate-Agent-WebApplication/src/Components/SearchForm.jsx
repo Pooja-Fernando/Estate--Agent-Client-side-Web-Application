@@ -7,10 +7,19 @@ export function SearchForm({onSearch}){
         maxPrice:'',
         minBedrooms:'',
         maxBedrooms:'',
+
         dateStart:'',
         postcodeAra:'',
 
     });
+    //function to update any field in the form.
+    const handleChange=(name,value)=>{//name is the property criteria object and the value from input.
+        setCriteria(previous=>({
+            ...previous,
+            [name]:value,
+
+    }));
+    }
     
 
 }
