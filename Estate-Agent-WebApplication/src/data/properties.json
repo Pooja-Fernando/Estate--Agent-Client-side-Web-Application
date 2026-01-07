@@ -11,16 +11,12 @@
     "shortDescription": "Beautiful 3-bedroom family home with spacious garden",
     "longDescription": "This stunning 3-bedroom detached house offers exceptional family living in the heart of Bromley. The property features a modern kitchen, bright living spaces, and a beautiful landscaped garden perfect for entertaining. Close to excellent schools and transport links.",
     "images": [
-      "/images/properties/house1-1.jpg",
-      "/images/properties/house1-2.jpg",
-      "/images/properties/house1-3.jpg",
-      "/images/properties/house1-4.jpg",
-      "/images/properties/house1-5.jpg",
-      "/images/properties/house1-6.jpg"
+      "/images/img1.png"
     ],
-    "floorPlan": "/images/properties/house1-floorplan.jpg",
+    "googleMapEmbed":
     
   },
+   
   {
     "id": 2,
     "type": "flat",
@@ -32,14 +28,11 @@
     "shortDescription": "Modern 2-bedroom apartment in prime location",
     "longDescription": "Contemporary 2-bedroom flat in the vibrant Camden area. Features open-plan living, modern fixtures, and excellent transport connections. Perfect for professionals or couples. Walking distance to Camden Market and excellent nightlife.",
     "images": [
-      "/images/properties/flat1-1.jpg",
-      "/images/properties/flat1-2.jpg",
-      "/images/properties/flat1-3.jpg",
-      "/images/properties/flat1-4.jpg",
-      "/images/properties/flat1-5.jpg",
-      "/images/properties/flat1-6.jpg"
+      "/images/img2.png",
+      
+      
     ],
-    "floorPlan": "/images/properties/flat1-floorplan.jpg",
+    "googleMapEmbed": 
    
   },
   {
@@ -53,15 +46,10 @@
     "shortDescription": "Luxury 5-bedroom Victorian house with period features",
     "longDescription": "Magnificent Victorian family home offering spacious accommodation over three floors. This property retains many original features including high ceilings, ornate cornicing, and fireplaces. Large garden, off-street parking, and close to Putney Bridge station.",
     "images": [
-      "/images/properties/house2-1.jpg",
-      "/images/properties/house2-2.jpg",
-      "/images/properties/house2-3.jpg",
-      "/images/properties/house2-4.jpg",
-      "/images/properties/house2-5.jpg",
-      "/images/properties/house2-6.jpg",
-      "/images/properties/house2-7.jpg",
-      "/images/properties/house2-8.jpg"
+      "/images/img3.png"
     ],
+    "googleMapEmbed": 
+
    
   },
   {
@@ -75,13 +63,10 @@
     "shortDescription": "Cozy 1-bedroom flat ideal for first-time buyers",
     "longDescription": "Perfect starter home or investment property. This well-maintained 1-bedroom flat features a modern kitchen, good-sized bedroom, and is located in a popular residential area. Great transport links to the City and Canary Wharf.",
     "images": [
-      "/images/properties/flat2-1.jpg",
-      "/images/properties/flat2-2.jpg",
-      "/images/properties/flat2-3.jpg",
-      "/images/properties/flat2-4.jpg",
-      "/images/properties/flat2-5.jpg",
-      "/images/properties/flat2-6.jpg"
+      "/images/img4.png",
+      
     ],
+    "googleMapEmbed": 
    
    
   },
@@ -96,14 +81,10 @@
     "shortDescription": "Spacious 4-bedroom semi-detached house with garage",
     "longDescription": "Impressive 4-bedroom semi-detached property offering versatile family accommodation. Features include a large kitchen/dining room, separate living room, master bedroom with en-suite, garage, and driveway. Well-regarded local schools nearby.",
     "images": [
-      "/images/properties/house3-1.jpg",
-      "/images/properties/house3-2.jpg",
-      "/images/properties/house3-3.jpg",
-      "/images/properties/house3-4.jpg",
-      "/images/properties/house3-5.jpg",
-      "/images/properties/house3-6.jpg",
-      "/images/properties/house3-7.jpg"
+      "/images/img5.png"
+     
     ],
+    "googleMapEmbed": 
    
     
   },
@@ -118,15 +99,10 @@
     "shortDescription": "Stunning 3-bedroom penthouse apartment with terrace",
     "longDescription": "Exceptional penthouse apartment with private terrace offering panoramic views. High-spec finish throughout, three double bedrooms, luxury bathroom and en-suite. Concierge service, gym, and moments from Paddington station.",
     "images": [
-      "/images/properties/flat3-1.jpg",
-      "/images/properties/flat3-2.jpg",
-      "/images/properties/flat3-3.jpg",
-      "/images/properties/flat3-4.jpg",
-      "/images/properties/flat3-5.jpg",
-      "/images/properties/flat3-6.jpg",
-      "/images/properties/flat3-7.jpg",
-      "/images/properties/flat3-8.jpg"
+      "/images/img6.png"
+      
     ],
+    "googleMapEmbed": 
     
    
   },
@@ -141,15 +117,12 @@
     "shortDescription": "Charming 2-bedroom terraced cottage",
     "longDescription": "Delightful 2-bedroom terraced house full of character. Features exposed beams, wood floors, and a courtyard garden. Recently refurbished kitchen and bathroom. Easy access to Crossrail and excellent local amenities.",
     "images": [
-      "/images/properties/house4-1.jpg",
-      "/images/properties/house4-2.jpg",
-      "/images/properties/house4-3.jpg",
-      "/images/properties/house4-4.jpg",
-      "/images/properties/house4-5.jpg",
-      "/images/properties/house4-6.jpg"
+      "/images/img7.png"
+      
     ],
+    "googleMapEmbed": 
     
    
-  }
-]
+    }
+    ]
 ]
