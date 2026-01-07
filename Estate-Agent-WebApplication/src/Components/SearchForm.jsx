@@ -33,7 +33,7 @@ export function SearchForm({onSearch}){
             onChange={val => handleChange('type',val)
             }
         />
-        {/*Prices*/ }
+      
         <label>Price</label>
         <NumberPicker
             value={criteria.price}
@@ -42,29 +42,30 @@ export function SearchForm({onSearch}){
 
             
         />
+
         <label>Bedrooms:</label>
         <NumberPicker
             value={criteria.bedrooms}
             onChange={val => handleChange('bedrooms', val)}
             min={0}
-      />
+         />
         <label>Available Date:</label>
         <DateTimePicker
             value={criteria.date}
             onChange={val => handleChange('date', val)}
-      />
+        />
 
         <label>Postcode:</label>
         <input
             type="text"
             value={criteria.postcode}
             onChange={e => handleChange('postcode', e.target.value)}
-      />
+        />
 
-      <button type="submit">Search</button>
+        <button type="submit">Search</button>
 
          </form>
-    )
+        )
     }
 
     
