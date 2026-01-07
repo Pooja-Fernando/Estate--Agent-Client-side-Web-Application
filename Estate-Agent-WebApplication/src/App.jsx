@@ -1,4 +1,4 @@
-
+import SearchForm from './Components/SearchForm';
 import './App.css'
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
 
 
   return (
+    <SearchForm/>
     
 
   )
