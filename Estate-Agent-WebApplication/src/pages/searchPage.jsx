@@ -5,27 +5,27 @@ export function SearchPage({properties}){
     const [searchCriteria, setSearchCriteria]=useState({});
     const filteredProperties = properties.filter(property => {
   // Check type
-    if (criteria.type !== "any" && property.type !== criteria.type) {
+    if (searchCriteria.type && searchCriteria.type !== "any" && property.type !== searchCriteria.type) {
          return false;
      }
 
   // Check price
-    if (criteria.minPrice && property.price < criteria.minPrice) {
+    if (searchCriteria.minPrice && property.price < searchCriteria.minPrice) {
         return false;
      }
-     if (criteria.maxPrice && property.price > criteria.maxPrice) {
+     if (searchCriteria.maxPrice && property.price > searchCriteria.maxPrice) {
         return false;
      }
 
   // Check bedrooms
-     if (criteria.minBedrooms && property.bedrooms < criteria.minBedrooms) {
+     if (searchCriteria.minBedrooms && property.bedrooms < searchCriteria.minBedrooms) {
         return false;
     }
-     if (criteria.maxBedrooms && property.bedrooms > criteria.maxBedrooms) {
+     if (searchCriteria.maxBedrooms && property.bedrooms > searchCriteria.maxBedrooms) {
         return false;
     }
 
-     // If it passed all checks, include it
+    
     return true;
 });
 
