@@ -1,8 +1,8 @@
+import React, { useContext } from 'react';
 import {FavouritesContext} from '../Context/FavouriteContext';
 import {Link} from 'react-router-dom';
 import { FavouritesContext } from '../Context/FavouriteContext';
 
-@param{object[]}lproperties
 
 function FavouritesList({allproperties}){
     // access the state and handles from the favourites context

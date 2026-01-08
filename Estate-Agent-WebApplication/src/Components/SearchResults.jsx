@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,from 'react';
 import PropertyCard from './PropertyCard'; // Import the card youcreated
 
 
