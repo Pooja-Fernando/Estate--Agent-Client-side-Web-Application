@@ -1,6 +1,8 @@
 import React,{useState} from'react';
 import  SearchForm from '../components/SearchForm';
 import PropertiesData from '.data/properties.json';
+import FavouritesList from '../Components/FavouriteList';
+import { FavouritesContext } from '../Context/FavouriteContext';
 export function SearchPage({properties}){
     const [searchCriteria, setSearchCriteria]=useState({});
     const filteredProperties = properties.filter(property => {
