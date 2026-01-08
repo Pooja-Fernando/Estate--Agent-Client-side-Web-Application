@@ -32,9 +32,14 @@ const favouritesProvider=({children})=>{
             clearFavourites,
        
 
-         }),[favourites ,addFavourite, removeFavourite,  clearFavourite ]
+         }),[favourites ,addFavourite, removeFavourite,  clearFavourite ]);
+        return ( 
+        <favouritesContext.Provider value ={contextValue}>
+            {childern}
+         </favouritesContext.Provider>
 
-        )
+
+        );
 
     };
     
