@@ -16,7 +16,7 @@ function FavouritesList({allproperties}){
     const handleDropOver = (e)=>{
         e.preventDefault();
     };
-    
+    //Handle the drop
     const handleDrop=(e) => {
         e.preventDefault();
         //get the property id that was saved when dragging started
@@ -33,18 +33,7 @@ function FavouritesList({allproperties}){
             }
         }
     };
-     //Handle the drop.
-    const handleDrop =(e)=>{
-        e.preventDefault();
-        const propertyIdString = e.dataTransfer.getData("propertyId");
-        if (propertyIdString){
-            const propertyId= Number(propertyIdString);
-            const propertyToAdd =allproperties.find(p=>p.id ==propertyId)
-            if (propertyToAdd){
-                addFavourites(propertyToAdd);
-            }
-        }
-    };
+     
     //drag and drop to remove
     const handlefavedragstart= (e, propertyId)=>{
         e.dataTransfer.setdata("favIdremove", propertyId);
