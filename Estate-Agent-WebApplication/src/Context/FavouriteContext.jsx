@@ -5,7 +5,7 @@ const favouritesProvider=({children})=>{
     const[favourites, setFavourites]=useState[()];
     
     //function to add a property and ensuring no duplicates.
-    const addFavourite=useCallBack((property)
+    const addFavourites=useCallBack((property)
         setFavourites(previous=>{
             const isDuplicate=previous.some(fav =>fav.id === property.id);
             if (!isDuplicate){
@@ -15,14 +15,26 @@ const favouritesProvider=({children})=>{
         });
         []);
         //function to remove a property by its id 
-        const removefavourite =useCallback((propertyId) => {
-            setFavourite =>(previous.filter(fav.id !== propertyId));
+        const removeFavourites =useCallback((propertyId) => {
+            setFavourites =>(previous.filter(fav.id !== propertyId));
         }, []);
 
         // function to clear the entire list
         const clearFavourites=useCallback(() => {
             setFavourites([]);
         },[]);
+
+        //bundling all satte and function in to a value object
+        const contextValue =useMemo(()=>({
+            favourites,
+            addFavourites,
+            removeFavourites,
+            clearFavourites,
+       
+
+         }),[favourites ,addFavourite, removeFavourite,  clearFavourite ]
+
+        )
 
     };
     
