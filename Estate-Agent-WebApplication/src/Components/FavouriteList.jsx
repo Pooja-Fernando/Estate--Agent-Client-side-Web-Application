@@ -30,6 +30,18 @@ function FavouritesList({allproperties}){
                 addFavourites(propertyToAdd);//add to favs
             }
         }
-    }
+    };
+    //drag to remove handlers
+    const handleDrop =(e)=>{
+        e.preventDefault();
+        const propertyIdString = e.dataTransfer.getData("propertyId");
+        if (propertyIdString){
+            const propertyId= Number(propertyIdString);
+            const propertyToAdd =allproperties.find(p=>p.id ==propertyId)
+            if (propertyToAdd){
+                addFavourites(propertyToAdd);
+            }
+        }
+    };
 
 }
