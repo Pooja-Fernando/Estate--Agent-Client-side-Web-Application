@@ -1,2 +1,2 @@
-import {createContext} fro'react';
+import {createContext} from 'react';
 const favouritesContext =createContext(null);
