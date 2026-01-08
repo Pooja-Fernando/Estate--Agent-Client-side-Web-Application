@@ -1,5 +1,5 @@
-import React ,from 'react';
-import PropertyCard from './PropertyCard'; // Import the card youcreated
+import React , from 'react';
+import PropertyCard from './PropertyCard'; // Import the card created
 
 
 function SearchResults({ properties }) {
