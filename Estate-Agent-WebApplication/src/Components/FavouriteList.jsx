@@ -10,7 +10,7 @@ function FavouritesList({allproperties}){
         e.preventDefault();
     };
 
-    //Handle the drop.
+  
     const handleDropOver = (e)=>{
         e.preventDefault();
     };
@@ -31,7 +31,7 @@ function FavouritesList({allproperties}){
             }
         }
     };
-    //drag to remove handlers
+     //Handle the drop.
     const handleDrop =(e)=>{
         e.preventDefault();
         const propertyIdString = e.dataTransfer.getData("propertyId");
@@ -43,5 +43,10 @@ function FavouritesList({allproperties}){
             }
         }
     };
+    //drag and drop to remove
+    const handlefavedragstart= (e, propertyId)=>{
+        e.dataTransfer.setdata("favIdremove", propertyId);
+        e.dataTransfer.effectAllowed="move";//visual indicator
+    }
 
 }
