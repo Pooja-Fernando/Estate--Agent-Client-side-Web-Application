@@ -1,5 +1,5 @@
 
-import {BrowserRouter,Route} from 'react-router';
+import {BrowserRouter,Route} from 'react-router-dom';
 import { FavouritesProvider } from './Context/FavouriteContext';
 
 //importing pages

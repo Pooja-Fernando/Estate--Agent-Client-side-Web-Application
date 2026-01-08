@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+
 import { FavouritesContext } from '../context/FavouritesContext';
 
 function FavouritesList({ allProperties }) {

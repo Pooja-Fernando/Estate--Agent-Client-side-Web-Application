@@ -1,44 +1,39 @@
-import React ,from 'react';
+import React,{ useContext } from 'react';
 import { Link } from 'react-router-dom';
-import All_Properties from '.data/properties.json';
+import { FavouritesContext } from '../context/FavouritesContext';
 
-function PropertyCard({}) {
-    
-   
+function PropertyCard({ property }) {
+    const { addFavourite, isFavourite } = useContext(FavouritesContext);
+
+    // Drag-to-add logic (Drag Source)
     const handleDragStart = (e) => {
-        // Save the property ID as a string in the dataTransfer object
-        e.dataTransfer.setData("propertyId",property.id.toString());
-        
-        // This is a visual indicator that the effect is copy (adding)
-        e.dataTransfer.effectAllowed = "copy"; 
+        e.dataTransfer.setData("propertyId", property.id.toString());
     };
 
     return (
         <div 
-            className="property-card" 
-            draggable="true" // Enables dragging of this element
-            onDragStart={handleDragStart} // Initiates the drag action and saves the ID
+            className={`property-card ${isFavourite(property.id) ? 'is-favourite' : ''}`}
+            draggable="true" 
+            onDragStart={handleDragStart} // Drag Source for adding to FavouritesList
         >
-            
-            <Link to={`/property/${ prtoperty.id}`} className="card-link">
-                <div className="card-image-container">
-                    < img
-                        src={`/images/${property.images[0]}`} // Adjust path if needed
-                        alt={ All_Properties.location} 
-                        className="property-image"
-                    />
-                </div>
-                
+            <Link to={`/property/${property.id}`} className="property-link">
+                <img src={property.images[0]} alt={property.location} className="card-image"/>
                 <div className="card-details">
-                    <h4 className="card-price">£{ All_Properties.price.toLocaleString()}</h4>
-                    <p className="card-address">{ All_Properties.location}, { All_Properties.postcode}</p>
-                    <div className="card-features">
-                        <span>{ property.bedrooms} bed</span> | 
-                        <span> { property.type}</span>
-                    </div>
+                    <h3>{property.location}</h3>
+                    <p className="card-price">£{property.price.toLocaleString()}</p>
+                    <p className="card-short-desc">{property.shortDescription}</p>
+                    <p>{property.bedrooms} Bed {property.type}</p>
                 </div>
             </Link>
-            
+
+            {/* Favourite Button (Alternative method for adding favourites) */}
+            <button 
+                className="favourite-button"
+                onClick={() => addFavourite(property.id)}
+                disabled={isFavourite(property.id)} // Prevents duplicates
+            >
+                {isFavourite(property.id) ? '❤️ Favourited' : '☆ Add to Favourites'}
+            </button>
         </div>
     );
 }
