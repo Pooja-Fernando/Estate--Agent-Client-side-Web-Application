@@ -13,7 +13,7 @@
     "images": [
       "/images/img1.png"
     ],
-    "googleMapEmbed":
+    "googleMapEmbed":""
     
   },
    
@@ -28,7 +28,7 @@
     "shortDescription": "Modern 2-bedroom apartment in prime location",
     "longDescription": "Contemporary 2-bedroom flat in the vibrant Camden area. Features open-plan living, modern fixtures, and excellent transport connections. Perfect for professionals or couples. Walking distance to Camden Market and excellent nightlife.",
     "images": [
-      "/images/img2.png",
+      "/images/img2.png"
       
       
     ],
@@ -63,7 +63,7 @@
     "shortDescription": "Cozy 1-bedroom flat ideal for first-time buyers",
     "longDescription": "Perfect starter home or investment property. This well-maintained 1-bedroom flat features a modern kitchen, good-sized bedroom, and is located in a popular residential area. Great transport links to the City and Canary Wharf.",
     "images": [
-      "/images/img4.png",
+      "/images/img4.png"
       
     ],
     "googleMapEmbed": ""
