@@ -1,9 +1,9 @@
-import { useState, useContext, useMemo } from 'react'; // 1. Added useMemo for filtering optimization
+import { useState, useContext, useMemo } from 'react'; 
 import SearchForm from '../Components/SearchForm';
-import SearchResults from '../Components/SearchResults'; // 2. IMPORTED missing SearchResults component
-import ALL_PROPERTIES from './data/properties.json'; // 3. Corrected import variable to match local use
+import SearchResults from '../Components/SearchResults'; 
+import ALL_PROPERTIES from './data/properties.json'; 
 import FavouritesList from '../Components/FavouriteList';
-import { FavouritesContext } from '../Context/FavouritesContext'; // 4. Corrected Context file name (assuming 'FavouriteContext' was a typo)
+import { FavouritesContext } from '../Context/FavouritesContext'; 
 
 
 export function SearchPage() {
