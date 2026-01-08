@@ -1,7 +1,7 @@
 import React,{createContext, useState ,useCallback, useMemo} from 'react';
 
-const FavouritesContext =createContext(null);
-const FavouritesProvider=({children})=>{
+export const FavouritesContext =createContext(null);
+export const FavouritesProvider=({children})=>{
     const[favourites, setFavourites]=useState[()];
     
     //function to add a property and ensuring no duplicates.
