@@ -1,7 +1,7 @@
 import React,{createContext, useState ,useCallback, useMemo} from 'react';
 
-const favouritesContext =createContext(null);
-const favouritesProvider=({children})=>{
+const FavouritesContext =createContext(null);
+const FavouritesProvider=({children})=>{
     const[favourites, setFavourites]=useState[()];
     
     //function to add a property and ensuring no duplicates.
@@ -16,7 +16,7 @@ const favouritesProvider=({children})=>{
         },[]);
         //function to remove a property by its id 
         const removeFavourites =useCallback((propertyId) => {
-            setFavourites =>(previous.filter(fav.id !== propertyId));
+            setFavourites(previous =>previous.filter(fav.id !== propertyId));
         }, []);
 
         // function to clear the entire list
@@ -32,16 +32,16 @@ const favouritesProvider=({children})=>{
             clearFavourites,
        
 
-         }),[favourites ,addFavourite, removeFavourite,  clearFavourite ]);
+         }),[favourites ,addFavourites, removeFavourites,  clearFavourites ]);
         return ( 
-        <favouritesContext.Provider value ={contextValue}>
-            {childern}
-         </favouritesContext.Provider>
+        <FavouritesContext.Provider value ={contextValue}>
+            {children}
+         </FavouritesContext.Provider>
 
 
         );
 
     };
     
-   export default favouritesProvider;
+   export default FavouritesProvider;
 
