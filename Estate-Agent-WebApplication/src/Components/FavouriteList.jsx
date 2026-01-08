@@ -42,7 +42,7 @@ function FavouritesList({allproperties}){
     return (
     <div 
       className="favourites-sidebar"
-      onDragOver={handleDragOver} // Allows drops
+      onDragOver={handledragOver} // Allows drop
       onDrop={handleDrop} // Handles adding new properties
     >
       <h3>My Favourites ({favourites.length})</h3>
@@ -64,7 +64,7 @@ function FavouritesList({allproperties}){
               key={fav.id} 
               className="favourite-item"
               draggable="true" // Makes the list item draggable for drag-out removal
-              onDragStart={(e) => handleFavDragStart(e, fav.id)} // Sets up removal ID
+              onDragStart={(e) => handlefavedragstart(e, fav.id)} // Sets up removal ID
             >
               <Link to={`/property/${fav.id}`} className="fav-link">
                 {fav.bedrooms} bed {fav.type} - £{fav.price.toLocaleString()}

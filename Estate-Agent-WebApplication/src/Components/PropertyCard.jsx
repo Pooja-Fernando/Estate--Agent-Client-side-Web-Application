@@ -7,7 +7,7 @@ function PropertyCard({}) {
    
     const handleDragStart = (e) => {
         // Save the property ID as a string in the dataTransfer object
-        e.dataTransfer.setData("propertyId",All_Properties.id.toString());
+        e.dataTransfer.setData("propertyId",property.id.toString());
         
         // This is a visual indicator that the effect is copy (adding)
         e.dataTransfer.effectAllowed = "copy"; 
@@ -20,10 +20,10 @@ function PropertyCard({}) {
             onDragStart={handleDragStart} // Initiates the drag action and saves the ID
         >
             
-            <Link to={`/property/${ All_Properties.id}`} className="card-link">
+            <Link to={`/property/${ prtoperty.id}`} className="card-link">
                 <div className="card-image-container">
                     < img
-                        src={`/images/${All_Properties.images}`} // Adjust path if needed
+                        src={`/images/${property.images}`} // Adjust path if needed
                         alt={ All_Properties.location} 
                         className="property-image"
                     />
@@ -33,8 +33,8 @@ function PropertyCard({}) {
                     <h4 className="card-price">£{ All_Properties.price.toLocaleString()}</h4>
                     <p className="card-address">{ All_Properties.location}, { All_Properties.postcode}</p>
                     <div className="card-features">
-                        <span>{ All_Properties.bedrooms} bed</span> | 
-                        <span> { All_Properties.type}</span>
+                        <span>{ property.bedrooms} bed</span> | 
+                        <span> { property.type}</span>
                     </div>
                 </div>
             </Link>
