@@ -19,6 +19,11 @@ const favouritesProvider=({children})=>{
             setFavourite =>(previous.filter(fav.id !== propertyId));
         }, []);
 
+        // function to clear the entire list
+        const clearFavourites=useCallback(() => {
+            setFavourites([]);
+        },[]);
+
     };
     
     const 
