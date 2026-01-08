@@ -4,7 +4,7 @@ export function PropertyImage({images}){
     
     return (
         
-    )
+    );
 
 
 }
