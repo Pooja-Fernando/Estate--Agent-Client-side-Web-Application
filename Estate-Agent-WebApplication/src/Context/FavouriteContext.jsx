@@ -1,22 +1,22 @@
 import React,{createContext, useState ,useCallback, useMemo} from 'react';
 
 export const FavouritesContext =createContext(null);
-export const FavouritesProvider=({children})=>{
-    const[favourites, setFavourites]=useState[()];
+export const FavouritesProvider=({ children }) => {
+    const [favourites, setFavourites] = useState([]);
     
     //function to add a property and ensuring no duplicates.
-    const addFavourites=useCallBack((property)=>{
+    const addFavourites = useCallback((property)=>{
         setFavourites(previous=>{
             const isDuplicate=previous.some(fav =>fav.id === property.id);
             if (!isDuplicate){
                 return[...previous, property];
             }
             return previous;
-        });
+            });
         },[]);
         //function to remove a property by its id 
         const removeFavourites =useCallback((propertyId) => {
-            setFavourites(previous =>previous.filter(fav.id !== propertyId));
+            setFavourites(previous =>previous.filter(fav=>fav.id !== propertyId));
         }, []);
 
         // function to clear the entire list
