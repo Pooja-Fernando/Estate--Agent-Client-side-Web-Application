@@ -43,5 +43,5 @@ const favouritesProvider=({children})=>{
 
     };
     
-    const 
+   export default favouritesProvider;
 
