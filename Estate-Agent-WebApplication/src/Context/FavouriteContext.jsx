@@ -1,7 +1,5 @@
-import {createContext} from 'react';
-import {useState} from 'reacct';
-import {useCallback} from 'react';
-import {useMemo} from 'react';
+import React,{createContext, useState ,useCallback, useMemo} from 'react';
+
 const favouritesContext =createContext(null);
 const favouritesProvider=({children})=>{
     const[favourites, setFavourites]=useState[()];
