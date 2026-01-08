@@ -1,47 +1,43 @@
-import React, {createContext, useState ,useCallback, useMemo} from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { FavouritesContext } from '../context/FavouritesContext';
 
-export const FavouritesContext =createContext(null);
-export const FavouritesProvider=({ children }) => {
-    const [favourites, setFavourites] = useState([]);
-    
-    //function to add a property and ensuring no duplicates.
-    const addFavourites = useCallback((property)=>{
-        setFavourites(previous=>{
-            const isDuplicate=previous.some(fav =>fav.id === property.id);
-            if (!isDuplicate){
-                return[...previous, property];
-            }
-            return previous;
-            });
-        },[]);
-        //function to remove a property by its id 
-        const removeFavourites =useCallback((propertyId) => {
-            setFavourites(previous =>previous.filter(fav=>fav.id !== propertyId));
-        }, []);
+function PropertyCard({ property }) {
+    const { addFavourite, isFavourite } = useContext(FavouritesContext);
 
-        // function to clear the entire list
-        const clearFavourites=useCallback(() => {
-            setFavourites([]);
-        },[]);
-
-        //bundling all satte and function in to a value object
-        const contextValue =useMemo(()=>({
-            favourites,
-            addFavourites,
-            removeFavourites,
-            clearFavourites,
-       
-
-         }),[favourites ,addFavourites, removeFavourites,  clearFavourites ]);
-        return ( 
-        <FavouritesContext.Provider value ={contextValue}>
-            {children}
-         </FavouritesContext.Provider>
-
-
-        );
-
+    const handleDragStart = (e) => {
+        // Set the property ID to be transferred during the drag operation
+        e.dataTransfer.setData("propertyId", property.id.toString());
     };
-    
-   export default FavouritesProvider;
 
+    return (
+        <div 
+            className={`property-card ${isFavourite(property.id) ? 'is-favourite' : ''}`}
+            // Enable dragging for the property card (Drag Source)
+            draggable="true" 
+            onDragStart={handleDragStart} 
+        >
+            <Link to={`/property/${property.id}`} className="property-link">
+                {/* Short description, price, and picture are required [cite: 37] */}
+                <img src={property.images[0]} alt={property.location} className="card-image"/>
+                <div className="card-details">
+                    <h3>{property.location}</h3>
+                    <p className="card-price">£{property.price.toLocaleString()}</p>
+                    <p className="card-short-desc">{property.shortDescription}</p>
+                    <p>{property.bedrooms} Bed {property.type}</p>
+                </div>
+            </Link>
+
+            {/* Favourite Button (Alternative method for adding favourites)  */}
+            <button 
+                className="favourite-button"
+                onClick={() => addFavourite(property.id)}
+                disabled={isFavourite(property.id)} // Prevent duplicates [cite: 47]
+            >
+                {isFavourite(property.id) ? '❤️ Favourited' : '☆ Add to Favourites'}
+            </button>
+        </div>
+    );
+}
+
+export default PropertyCard;

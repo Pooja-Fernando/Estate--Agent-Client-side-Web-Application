@@ -1,17 +1,19 @@
-import React ,{useState} from 'react';
-import {Link,useParams} from 'react-router-dom';
-import All_Properties from './data/properties.json';
+ import{ useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+
+
+import ALL_PROPERTIES from '../data/properties.json'; 
 
 function PropertyPage() {
     // 1. Get the ID from the URL
     const { id } = useParams();
-    
+
     // State to hold the currently selected tab (e.g., 'description', 'floorplan', 'map')
     const [activeTab, setActiveTab] = useState('description');
 
     // 2. Find the property based on the URL ID
-    // We use a simple useEffect/state or a direct lookup here.
-    const property = All_Properties.find(p => p.id === Number(id));
+    
+    const property = ALL_PROPERTIES.find(p => p.id === Number(id));
 
     // Handle case where property is not found (e.g., bad URL)
     if (!property) {
@@ -29,13 +31,16 @@ function PropertyPage() {
         switch (activeTab) {
             case 'description':
                 return (
-                    <div>
-                        <p>{property.description}</p>
+                    <div className="property-description-content">
+                        
+                        <p>{property.longDescription}</p> 
                         <ul>
                             <li>**Type:** {property.type}</li>
                             <li>**Bedrooms:** {property.bedrooms}</li>
                             <li>**Price:** £{property.price.toLocaleString()}</li>
-                            <li>**Postcode:** {property.postcode}</li>
+                            
+                            
+                            <li>**Postcode:** {property.postcodeArea}</li> 
                         </ul>
                     </div>
                 );
@@ -43,21 +48,26 @@ function PropertyPage() {
                 return (
                     // Placeholder for the Floor Plan image
                     <div className="floorplan-image-container">
-                        <img src={`/images/${property.floorplanImage}`} alt="Floor Plan" className="floorplan-image"/>
-                        <p>Floor plan for the {property.type} property.</p>
                         
-
-[Image of Floor plan example]
-
+                        <img 
+                            src={`/images/floorplan-${property.id}.png`} 
+                            alt="Floor Plan" 
+                            className="floorplan-image"
+                        />
+                        <p>Floor plan for the {property.type} property.</p>
                     </div>
                 );
             case 'map':
                 return (
-                    // Placeholder for the map view (using a simple image for coursework)
+                    // Placeholder for the map view (using the provided googleMapEmbed key)
                     <div className="map-container">
-                        <p>Location details for {property.address}.</p>
-                        <p>Latitude: {property.latitude}, Longitude: {property.longitude}</p>
+                        {/* 6. CORRECTION: Use the googleMapEmbed field you provided */}
+                        <div dangerouslySetInnerHTML={{ __html: property.googleMapEmbed }} /> 
+                        <p>Location: {property.location}.</p> 
                         
+                        {/* The property data provided did not have latitude/longitude keys.
+                            If you add them later, uncomment the line below. */}
+                        {/* <p>Latitude: {property.latitude}, Longitude: {property.longitude}</p> */}
                     </div>
                 );
             default:
@@ -70,17 +80,22 @@ function PropertyPage() {
         <div className="property-page-container">
             <header className="property-header">
                 <Link to="/" className="back-link">&larr; Back to Search</Link>
-                <h1>{property.address}</h1>
+               
+                <h1>{property.location}</h1> 
                 <p className="property-price">£{property.price.toLocaleString()}</p>
             </header>
 
             <div className="property-image-gallery">
-                {/* Display main image */}
-                <img src={`/images/${property.mainImage}`} alt={property.address} className="main-property-image"/>
+                
+                <img 
+                    src={property.images[0]} 
+                    alt={property.location} 
+                    className="main-property-image"
+                />
             </div>
 
             <div className="tabs-navigation">
-                {/* Tab Buttons */}
+               
                 <button 
                     className={activeTab === 'description' ? 'active' : ''} 
                     onClick={() => setActiveTab('description')}

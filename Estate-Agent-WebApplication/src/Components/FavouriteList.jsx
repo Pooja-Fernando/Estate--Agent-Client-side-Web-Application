@@ -1,90 +1,67 @@
 import React, { useContext } from 'react';
-import {FavouritesContext} from '../Context/FavouriteContext';
-import {Link} from 'react-router-dom';
-import { FavouritesContext } from '../Context/FavouriteContext';
+import { FavouritesContext } from '../context/FavouritesContext';
 
+function FavouritesList({ allProperties }) {
+    const { favourites, addFavourite, removeFavourite, clearFavourites } = useContext(FavouritesContext);
 
-function FavouritesList({allproperties}){
-    // access the state and handles from the favourites context
-    const {favourites ,addFavourites, removeFavourites,  clearFavourites}= useContext(FavouritesContext);
-    //allows dropping
-    const handledragOver=(e)=>{
-        e.preventDefault();
+    // Get the full property details for each favourite ID
+    const favouriteProperties = allProperties.filter(p => favourites.includes(p.id));
+
+    // --- Drag-to-Add Logic (Drop Target) ---
+    const handleDragOver = (e) => {
+        e.preventDefault(); 
     };
 
-  
-    const handleDropOver = (e)=>{
+    const handleDrop = (e) => {
         e.preventDefault();
-    };
-    //Handle the drop
-    const handleDrop=(e) => {
-        e.preventDefault();
-        //get the property id that was saved when dragging started
-        const propertyIdString = e.dataTransfer.getData("propertyId");
-        if (propertyIdString){
-            const propertyId = Number(propertyIdString);
-
-
-
-            const propertyToAdd= allproperties.find(p=>p.id===propertyId);
-            
-            if (propertyToAdd){
-                addFavourites(propertyToAdd);//add to favs
-            }
+        const propertyId = e.dataTransfer.getData("propertyId"); // ID sent from PropertyCard
+        if (propertyId) {
+            addFavourite(propertyId); // Uses context to add
         }
     };
-     
-    //drag and drop to remove
-    const handlefavedragstart= (e, propertyId)=>{
-        e.dataTransfer.setdata("favIdremove", propertyId);
-        e.dataTransfer.effectAllowed="move";//visual indicator
+    
+    // --- Drag-out Logic (Drag Source for removal) ---
+    const handleDragStart = (e, id) => {
+        // Set a special data tag so the SearchPage knows this is an item to be removed
+        e.dataTransfer.setData("favIdToRemove", id.toString()); 
     };
-    return (
-    <div 
-      className="favourites-sidebar"
-      onDragOver={handledragOver} // Allows drop
-      onDrop={handleDrop} // Handles adding new properties
-    >
-      <h3>My Favourites ({favourites.length})</h3>
-      
-      
-      {favourites.length > 0 && (
-          <button onClick={clearFavourites} className="clear-btn">
-              Clear All Favourites
-          </button>
-      )}
 
-      <div className="favourites-items">
-        {favourites.length === 0 ? (
-          <p>Drag properties here to add them to your favourites.</p>
-        ) : (
-          // Display, Linking, and Removal setup
-          favourites.map(fav => (
-            <div 
-              key={fav.id} 
-              className="favourite-item"
-              draggable="true" // Makes the list item draggable for drag-out removal
-              onDragStart={(e) => handlefavedragstart(e, fav.id)} // Sets up removal ID
-            >
-              <Link to={`/property/${fav.id}`} className="fav-link">
-                {fav.bedrooms} bed {fav.type} - £{fav.price.toLocaleString()}
-              </Link>
-               
-             
-              <button 
-                onClick={() => removeFavourite(fav.id)} 
-                className="delete-fav-btn"
-                aria-label="Remove from favourites"
-              >
-                &times;
-              </button>
+    return (
+        <div 
+            className="favourites-list-container"
+            onDragOver={handleDragOver} 
+            onDrop={handleDrop} // Drop Target for adding
+        >
+            <h3>🌟 My Favourites List ({favouriteProperties.length})</h3>
+            
+            {favouriteProperties.length > 0 && (
+                <button onClick={clearFavourites} className="clear-button">Clear All Favourites</button>
+            )}
+
+            <div className="favourites-items">
+                {favouriteProperties.length === 0 ? (
+                    <p className="empty-message">Drag a property card here to save it!</p>
+                ) : (
+                    favouriteProperties.map(property => (
+                        <div 
+                            key={property.id} 
+                            className="favourite-item"
+                            // Enable dragging for removal (Drag Source)
+                            draggable="true" 
+                            onDragStart={(e) => handleDragStart(e, property.id)}
+                        >
+                            <Link to={`/property/${property.id}`}>
+                                <p>{property.location}</p>
+                            </Link>
+                            <button onClick={() => removeFavourite(property.id)} className="remove-button">
+                                X
+                            </button>
+                        </div>
+                    ))
+                )}
             </div>
-          ))
-        )}
-      </div>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default FavouritesList;
-
