@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React,{useState} from 'react';
 import './SearchForm.css';
 export function SearchForm({onSearch}){
     const[criteria,setCriteria]=useState({
@@ -13,19 +13,19 @@ export function SearchForm({onSearch}){
 
     });
     //function to update any field in the form.
-    const handleChange=(name,value)=>{//name is the property criteria object and the value from input.
-        setCriteria(previous=>({
+    function handleChange(name, value) {
+        setCriteria(previous => ({
             ...previous,
-            [name]:value,
-
-    }));
+            [name]: value,
+        }));
+    }
     const handleSubmit=(e)=>{
         e.preventDefault();//will not refresh the web page when submitting.
-        onSerach(criteria);
+        onSearch(criteria);
 
     };
     return(
-        <form onsubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <label>Property Type</label>
         <DropdownList
             data={['any','house','flat']}
@@ -40,7 +40,7 @@ export function SearchForm({onSearch}){
             onChange={val =>handleChange('price',val)}
             min={0}//from this user cannot pick a negative value.input validation
 
-            
+        
         />
 
         <label>Bedrooms:</label>
@@ -70,4 +70,4 @@ export function SearchForm({onSearch}){
 
     
 
-}
+
