@@ -1,6 +1,6 @@
 [
-   [
-  {
+   {
+  
     "id": 1,
     "type": "house",
     "price": 450000,
@@ -32,7 +32,7 @@
       
       
     ],
-    "googleMapEmbed": 
+    "googleMapEmbed": ""
    
   },
   {
@@ -48,7 +48,7 @@
     "images": [
       "/images/img3.png"
     ],
-    "googleMapEmbed": 
+    "googleMapEmbed": ""
 
    
   },
@@ -66,7 +66,7 @@
       "/images/img4.png",
       
     ],
-    "googleMapEmbed": 
+    "googleMapEmbed": ""
    
    
   },
@@ -84,7 +84,7 @@
       "/images/img5.png"
      
     ],
-    "googleMapEmbed": 
+    "googleMapEmbed": ""
    
     
   },
@@ -102,7 +102,7 @@
       "/images/img6.png"
       
     ],
-    "googleMapEmbed": 
+    "googleMapEmbed": ""
     
    
   },
@@ -120,9 +120,9 @@
       "/images/img7.png"
       
     ],
-    "googleMapEmbed": 
+    "googleMapEmbed": ""
     
    
-    }
-    ]
+  }
+    
 ]
