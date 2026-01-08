@@ -23,7 +23,7 @@ function PropertyCard({}) {
             <Link to={`/property/${ prtoperty.id}`} className="card-link">
                 <div className="card-image-container">
                     < img
-                        src={`/images/${property.images}`} // Adjust path if needed
+                        src={`/images/${property.images[0]}`} // Adjust path if needed
                         alt={ All_Properties.location} 
                         className="property-image"
                     />
