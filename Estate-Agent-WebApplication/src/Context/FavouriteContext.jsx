@@ -5,7 +5,7 @@ const favouritesProvider=({children})=>{
     const[favourites, setFavourites]=useState[()];
     
     //function to add a property and ensuring no duplicates.
-    const addFavourites=useCallBack((property)
+    const addFavourites=useCallBack((property)=>{
         setFavourites(previous=>{
             const isDuplicate=previous.some(fav =>fav.id === property.id);
             if (!isDuplicate){
@@ -13,7 +13,7 @@ const favouritesProvider=({children})=>{
             }
             return previous;
         });
-        []);
+        },[]);
         //function to remove a property by its id 
         const removeFavourites =useCallback((propertyId) => {
             setFavourites =>(previous.filter(fav.id !== propertyId));
