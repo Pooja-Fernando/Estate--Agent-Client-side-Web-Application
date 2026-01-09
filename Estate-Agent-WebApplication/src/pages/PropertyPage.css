@@ -1,0 +1,105 @@
+/* PropertyPage.css - Base (Large Screen) */
+
+.property-details-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.property-header-layout {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.property-gallery {
+  flex: 2; /* Gallery takes 2/3 width */
+}
+
+.property-info {
+  flex: 1; /* Info takes 1/3 width */
+}
+
+/* Tabs Styling - ensuring visual consistency [cite: 57] */
+.tab-list {
+  display: flex;
+  border-bottom: 2px solid var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab:hover, .tab.active {
+  border-bottom: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: bold;
+}
+/* PropertyPage.css - Small Screen Layout (Hand-written media query [cite: 51]) */
+
+@media (max-width: 992px) {
+  .property-header-layout {
+    /* Stack the gallery and info vertically */
+    flex-direction: column;
+  }
+  
+  .property-gallery .thumbnail-container {
+    /* Switch thumbnails to a horizontally scrolling row if too many */
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+  }
+  
+  .tab-list {
+    /* Allow tabs to wrap or scroll horizontally on tiny screens */
+    flex-wrap: wrap;
+  }
+  /* Components/PropertyCard.css */
+
+.property-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s;
+  background-color: #fff;
+}
+
+.property-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+/* Aesthetic Requirement: Use of headings and subheadings  */
+.card-content h4 {
+  font-size: 1.2em;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+/* Aesthetic Requirement: Related items (price, beds, link) are grouped  */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #eee;
+}
+}

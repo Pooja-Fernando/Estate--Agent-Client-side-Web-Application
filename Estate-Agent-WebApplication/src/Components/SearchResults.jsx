@@ -25,7 +25,7 @@ function SearchResults({ properties }) {
                         property={property} 
                     />
                 ))}
-            </div>
+           </div>
         </div>
     );
 }

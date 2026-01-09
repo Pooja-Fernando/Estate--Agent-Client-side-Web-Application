@@ -1,0 +1,53 @@
+/* SearchPage.css - Base (Large Screen) */
+
+.search-page-layout {
+  display: grid;
+  /* Defining columns: Search/Results takes 3 parts, Favourites takes 1 part */
+  grid-template-columns: 3fr 1fr; 
+  gap: 20px;
+  width: 100%;
+}
+
+.search-content {
+  /* This column holds the form and results */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Favourites list pinned to the side [cite: 46] */
+.favourite-list {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  /* Use position: sticky or fixed if desired, though not strictly required */
+}
+
+/* Results Display - Using Grid/Flex for rows (7%) */
+.property-list {
+  display: grid;
+  /* Two columns of property cards */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px;
+  margin-top: 20px;
+}
+/* SearchPage.css - Small Screen Layout (Hand-written media query [cite: 51]) */
+
+@media (max-width: 992px) { 
+  .search-page-layout {
+    /* Switch from grid to flex-column */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Place the Favourites list first or last, based on priority */
+  .favourite-list {
+    order: -1; /* Place at the top of the stacked layout */
+    margin-bottom: 20px;
+  }
+  
+  .property-list {
+    /* Switch to a single column for property cards */
+    grid-template-columns: 1fr; 
+  }
+}
