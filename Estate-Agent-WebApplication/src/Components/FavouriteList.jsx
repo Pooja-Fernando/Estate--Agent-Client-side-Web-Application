@@ -1,63 +1,59 @@
-// Components/FavouriteList.jsx
-
+// src/Components/FavouriteList.jsx
 import React from 'react';
 import { useFavourites } from '../Context/FavouriteContext';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const FavouriteList = () => {
-  const { favourites, removeFavourite, clearFavourites, addFavourite } = useFavourites();
+  const { favourites, removeFavourite, clearFavourites } = useFavourites();
 
-  // Logic for Drag-and-Drop ADD (Drop Target - 8%)
+  const handleDragOver = (e) => {
+    e.preventDefault(); // Essential to allow a drop
+  };
+
   const handleDrop = (e) => {
     e.preventDefault();
-    try {
-      // Retrieve property data transferred from PropertyCard
-      const propertyData = e.dataTransfer.getData('text/plain');
-      const property = JSON.parse(propertyData);
-      addFavourite(property);
-    } catch (error) {
-      console.error('Error parsing dragged data:', error);
-    }
+    // Assuming the PropertyCard component sets the property ID on dragStart
+    const propertyId = e.dataTransfer.getData("text/plain"); 
+    
+    // Check if the drop target is the list itself (for remove by dragging out)
+    // Here we'll just handle adding to the list (handled in SearchPage or PropertyCard)
+    // The main use here is to handle "dragging OUT" and dropping elsewhere, 
+    // but the simplest implementation is often using the delete button on the item.
   };
-  
-  // Logic for Drag-and-Drop REMOVE (Drag Source - 7%)
-  const handleDragStart = (e, propertyId) => {
-      // Use dataTransfer to identify the item being removed
-      e.dataTransfer.setData('text/propertyId', propertyId);
+
+  const handleClear = () => {
+    clearFavourites();
   };
-  
-  // Logic for Drag-and-Drop REMOVE (Drop Target - 7%)
-  // You would define a "drop outside" area (or use the document body) to handle the 'remove' drop.
-  // For simplicity here, we focus on the list itself.
 
   return (
     <div 
       className="favourite-list" 
-      onDragOver={(e) => e.preventDefault()} // Must call preventDefault to allow dropping
-      onDrop={handleDrop} // Handles dropping a new property ONTO the list
+      onDragOver={handleDragOver} 
+      onDrop={handleDrop}
     >
-      <h3>⭐️ Your Favourites (3%)</h3>
+      <h3>💖 Favourites List ({favourites.length})</h3>
       
+      {favourites.length > 0 && (
+        <button onClick={handleClear} className="clear-button">Clear All</button>
+      )}
+
       {favourites.length === 0 ? (
-        <p>Drag a property here or click the favourite button to add.</p>
+        <p>Drag properties here or click the favourite icon to add!</p>
       ) : (
-        <>
-          <button onClick={clearFavourites} className="clear-btn">Clear All (7%)</button>
-          <ul>
-            {favourites.map(property => (
-              <li key={property.id} 
-                  draggable="true" 
-                  onDragStart={(e) => handleDragStart(e, property.id)} // Enable drag-out
-                  className="favourite-item"
+        <ul className="favourite-items">
+          {favourites.map(property => (
+            <li key={property.id} className="favourite-item">
+              <span className="fav-title">{property.type} @ {property.price}</span>
+              <button 
+                onClick={() => removeFavourite(property.id)} 
+                className="delete-button"
+                title="Remove from favourites"
               >
-                <Link to={`/property/${property.id}`}>{property.descriptionShort}</Link>
-                <button onClick={() => removeFavourite(property.id)} className="delete-btn">
-                  &times; {/* Delete button to remove (7%) */}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </>
+                🗑️
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

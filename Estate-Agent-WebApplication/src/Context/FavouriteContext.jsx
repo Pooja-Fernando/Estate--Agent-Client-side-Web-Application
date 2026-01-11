@@ -1,58 +1,52 @@
-// Context/FavouriteContext.jsx
+// src/Context/FavouriteContext.jsx
+import React, { createContext, useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
-import React, { createContext, useState, useContext } from 'react';
-
-// 1. Create the Context
+// Create the context
 const FavouriteContext = createContext();
 
-// Hook to easily consume the context
+// Custom hook to use the favourites context
 export const useFavourites = () => useContext(FavouriteContext);
 
-// 2. Context Provider Component
 export const FavouriteProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
 
-  // Function to Add Property (must prevent duplicates - 8%)
+  // Check if a property is already in the list to prevent duplicates (8% requirement)
+  const isFavourite = (propertyId) => {
+    return favourites.some(fav => fav.id === propertyId);
+  };
+
   const addFavourite = (property) => {
-    // Check if property is already in the list using its ID
-    const isDuplicate = favourites.some(fav => fav.id === property.id);
-    
-    if (isDuplicate) {
-      console.log('Property already in favourites.');
-      // You could add a toast notification here for better UX
-      return; 
+    if (!isFavourite(property.id)) {
+      setFavourites(prev => [...prev, property]);
     }
-
-    setFavourites(prevFavourites => [...prevFavourites, property]);
-    console.log(`Added property ID ${property.id} to favourites.`);
   };
 
-  // Function to Remove Property (by ID - 7%)
   const removeFavourite = (propertyId) => {
-    setFavourites(prevFavourites => 
-      prevFavourites.filter(fav => fav.id !== propertyId)
-    );
-    console.log(`Removed property ID ${propertyId} from favourites.`);
+    setFavourites(prev => prev.filter(fav => fav.id !== propertyId));
   };
 
-  // Function to Clear All Favourites (7%)
   const clearFavourites = () => {
     setFavourites([]);
-    console.log('Cleared all favourites.');
   };
 
-  const contextValue = {
+  const value = {
     favourites,
+    isFavourite,
     addFavourite,
     removeFavourite,
     clearFavourites,
   };
 
   return (
-    <FavouriteContext.Provider value={contextValue}>
+    <FavouriteContext.Provider value={value}>
       {children}
     </FavouriteContext.Provider>
   );
 };
 
-// 3. You need to wrap your <App /> component with <FavouriteProvider> in main.jsx/App.jsx
+FavouriteProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+// You need to wrap your App.jsx or main component with <FavouriteProvider> in main.jsx or App.jsx
