@@ -1,4 +1,4 @@
-// src/Components/FavouriteList.jsx
+
 import React from 'react';
 import { useFavourites } from '../Context/FavouriteContext';
 import PropTypes from 'prop-types';
@@ -14,11 +14,7 @@ const FavouriteList = () => {
     e.preventDefault();
     // Assuming the PropertyCard component sets the property ID on dragStart
     const propertyId = e.dataTransfer.getData("text/plain"); 
-    
-    // Check if the drop target is the list itself (for remove by dragging out)
-    // Here we'll just handle adding to the list (handled in SearchPage or PropertyCard)
-    // The main use here is to handle "dragging OUT" and dropping elsewhere, 
-    // but the simplest implementation is often using the delete button on the item.
+   
   };
 
   const handleClear = () => {

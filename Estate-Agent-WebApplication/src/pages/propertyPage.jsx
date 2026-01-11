@@ -17,7 +17,7 @@ function PropertyPage() {
         );
     }
     
-    // Tab rendering logic
+    
     const renderTabContent = () => {
         switch (activeTab) {
             case 'description':
