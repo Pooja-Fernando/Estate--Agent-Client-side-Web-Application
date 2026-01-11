@@ -1,161 +1,100 @@
-
-
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-
-import './SearchForm.css'; // Import specific CSS for the form styling
+import './SearchForm.css';
+// Assume you install and import a React Widget library like react-widgets or ant-design
+// import { DropdownList, Calendar, NumberPicker } from 'react-widgets'; 
 
 const SearchForm = ({ onSearch }) => {
-  const [criteria, setCriteria] = useState({
-    type: 'any',
-    minPrice: '',
+  // Initialize state for all five search criteria
+  const [formData, setFormData] = useState({
+    type: 'any', // (house, flat, any)
+    minPrice: '', 
     maxPrice: '',
     minBedrooms: '',
     maxBedrooms: '',
-    postcodeArea: '',
-    dateAdded: '', // For "after specified date"
+    dateAdded: null, // For single date search
+    postcodeArea: '', // e.g., BR1, NW1
   });
 
+  // Simple change handler for standard inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCriteria(prev => ({ ...prev, [name]: value }));
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-  
-  // Helper function for widgets that don't use standard event objects (e.g., DatePicker)
-  const handleWidgetChange = (name, value) => {
-    setCriteria(prev => ({ ...prev, [name]: value }));
-  };
+
+  // Handler for custom React Widgets (Example: Date or Number picker)
+  // const handleWidgetChange = (name, value) => {
+  //   setFormData(prevData => ({ ...prevData, [name]: value }));
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Execute the search function passed from SearchPage
-    onSearch(criteria); // This starts the search functionality (10% requirement)
+    // Pass the cleaned form data up to the parent (SearchPage) for filtering
+    onSearch(formData);
   };
-  
-  // Example data for dropdowns
-  const propertyTypes = ['any', 'house', 'flat'];
-  const minMaxPrices = ['100000', '200000', '500000', '750000', '1000000', 'any'];
-  const minMaxBedrooms = ['1', '2', '3', '4', '5', 'any'];
-
 
   return (
     <div className="search-form-container">
-      <h2>Find Your Dream Property</h2>
-      <form onSubmit={handleSubmit} className="search-form-grid">
+      <h3>Property Search Criteria</h3>
+      <form onSubmit={handleSubmit} className="search-form">
         
-        {/* 1. Property Type (Dropdown/Select Widget) [cite: 25] */}
+        [cite_start]{/* 1. Property Type (Dropdown/Select Widget) [cite: 25] */}
         <div className="form-group">
-          <label htmlFor="type">Property Type</label>
-          {/* Example of a standard select element that would be styled as a widget */}
+          <label htmlFor="type">Property Type:</label>
+          {/* REPLACE with React Widget for DropdownList */}
           <select 
-            id="type" 
-            name="type" 
-            value={criteria.type} 
+            id="type"
+            name="type"
+            value={formData.type}
             onChange={handleChange}
-            className="react-widget" // Class for widget styling
+            className="widget-select"
           >
-            {propertyTypes.map(type => (
-              <option key={type} value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
-            ))}
+            [cite_start]<option value="any">Any [cite: 25]</option>
+            [cite_start]<option value="house">House [cite: 25]</option>
+            [cite_start]<option value="flat">Flat [cite: 25]</option>
           </select>
         </div>
 
-        {/* 2. Min Price (Number Input Widget) [cite: 26] */}
-        <div className="form-group">
-          <label htmlFor="minPrice">Min Price (£)</label>
-          {/* Use NumberPicker or standard input styled as a widget */}
-          <input
-            type="number"
-            id="minPrice"
-            name="minPrice"
-            placeholder="e.g. 100000"
-            value={criteria.minPrice}
-            onChange={handleChange}
-            className="react-widget"
-          />
-        </div>
-        
-        {/* 3. Max Price (Number Input Widget) [cite: 26] */}
-        <div className="form-group">
-          <label htmlFor="maxPrice">Max Price (£)</label>
-          <input
-            type="number"
-            id="maxPrice"
-            name="maxPrice"
-            placeholder="e.g. 500000"
-            value={criteria.maxPrice}
-            onChange={handleChange}
-            className="react-widget"
-          />
+        [cite_start]{/* 2. Price (Min/Max Number Input Widgets) [cite: 26] */}
+        <div className="form-group-double">
+          <label>Price Range:</label>
+          <div className="input-pair">
+             {/* REPLACE with React Widget for NumberPicker or RangeSlider */}
+            [cite_start]<input type="number" name="minPrice" placeholder="Min Price [cite: 26]" value={formData.minPrice} onChange={handleChange} className="widget-number"/>
+            [cite_start]<input type="number" name="maxPrice" placeholder="Max Price [cite: 26]" value={formData.maxPrice} onChange={handleChange} className="widget-number"/>
+          </div>
         </div>
 
-        {/* 4. Min Bedrooms (Dropdown/Number Widget) [cite: 27] */}
-        <div className="form-group">
-          <label htmlFor="minBedrooms">Min Bedrooms</label>
-          <select 
-            id="minBedrooms" 
-            name="minBedrooms" 
-            value={criteria.minBedrooms} 
-            onChange={handleChange}
-            className="react-widget"
-          >
-            {minMaxBedrooms.map(b => <option key={b} value={b}>{b}</option>)}
-          </select>
-        </div>
-        
-        {/* 5. Max Bedrooms (Dropdown/Number Widget) [cite: 27] */}
-        <div className="form-group">
-          <label htmlFor="maxBedrooms">Max Bedrooms</label>
-          <select 
-            id="maxBedrooms" 
-            name="maxBedrooms" 
-            value={criteria.maxBedrooms} 
-            onChange={handleChange}
-            className="react-widget"
-          >
-            {minMaxBedrooms.map(b => <option key={b} value={b}>{b}</option>)}
-          </select>
+        [cite_start]{/* 3. Bedrooms (Min/Max Number Input Widgets) [cite: 27] */}
+        <div className="form-group-double">
+          <label>Bedrooms:</label>
+          <div className="input-pair">
+            {/* REPLACE with React Widget for NumberPicker */}
+            [cite_start]<input type="number" name="minBedrooms" placeholder="Min Bedrooms [cite: 27]" value={formData.minBedrooms} onChange={handleChange} className="widget-number"/>
+            [cite_start]<input type="number" name="maxBedrooms" placeholder="Max Bedrooms [cite: 27]" value={formData.maxBedrooms} onChange={handleChange} className="widget-number"/>
+          </div>
         </div>
 
-        {/* 6. Date Added (Date Picker Widget) [cite: 28] */}
+        [cite_start]{/* 4. Date Added (Date Picker Widget) [cite: 28] */}
         <div className="form-group">
-          <label htmlFor="dateAdded">Date Added (After)</label>
-          {/* You would replace the standard input below with a true DatePicker component 
-              from your chosen React Widgets library (e.g., react-widgets) */}
-          <input 
-            type="date"
-            id="dateAdded"
-            name="dateAdded"
-            value={criteria.dateAdded}
-            onChange={handleChange}
-            className="react-widget"
-          />
+          <label htmlFor="dateAdded">Date Added (After):</label>
+          {/* REPLACE with React Widget for Calendar or DatePicker */}
+          <input type="date" id="dateAdded" name="dateAdded" value={formData.dateAdded || ''} onChange={handleChange} className="widget-date"/>
         </div>
 
-        {/* 7. Postcode Area (Text Input) [cite: 28] */}
+        [cite_start]{/* 5. Postcode Area (Text Input Widget) [cite: 28] */}
         <div className="form-group">
-          <label htmlFor="postcodeArea">Postcode Area</label>
-          <input
-            type="text"
-            id="postcodeArea"
-            name="postcodeArea"
-            placeholder="e.g. BR1, NW1"
-            value={criteria.postcodeArea}
-            onChange={handleChange}
-            className="react-widget"
-          />
+          <label htmlFor="postcodeArea">Postcode Area:</label>
+           {/* REPLACE with React Widget if enhanced input is chosen (e.g., masked input) */}
+          [cite_start]<input type="text" id="postcodeArea" name="postcodeArea" placeholder="e.g. BR1, NW1 [cite: 28]" value={formData.postcodeArea} onChange={handleChange} className="widget-text"/>
         </div>
 
-        <button type="submit" className="search-button">
-          Search Properties
-        </button>
+        <button type="submit" className="search-button">Search Properties</button>
       </form>
     </div>
   );
-};
-
-SearchForm.propTypes = {
-  onSearch: PropTypes.func.isRequired,
 };
 
 export default SearchForm;

@@ -1,0 +1,99 @@
+/* --- Favourites List Container (Drop Zone) --- */
+
+.favourites-list-container {
+    min-height: 200px;
+    padding: 10px;
+    border: 2px dashed #ccc; /* Visual cue for the drop zone */
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.favourites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.clear-favourites-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.2s;
+}
+
+.clear-favourites-button:hover {
+    background-color: #c0392b;
+}
+
+/* --- List Items --- */
+
+.favourites-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.favourite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.favourite-item:last-child {
+    border-bottom: none;
+}
+
+.favourite-item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.favourite-item-link {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.2s;
+}
+
+.favourite-item-link:hover {
+    color: #0056b3;
+}
+
+.favourite-item-price {
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* --- Delete Button --- */
+
+.delete-favourite-button {
+    background: #fff;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height: 1;
+    text-align: center;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.delete-favourite-button:hover {
+    background: #e74c3c;
+    color: white;
+}

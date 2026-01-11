@@ -1,105 +1,88 @@
-/* PropertyPage.css - Base (Large Screen) */
+/* --- 1. Base Container & Header --- */
 
-.property-details-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+.property-page-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 
-.property-header-layout {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 30px;
+.property-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.property-gallery {
-  flex: 2; /* Gallery takes 2/3 width */
+.property-header h1 {
+    font-size: 2.2em;
+    margin-bottom: 5px;
 }
 
-.property-info {
-  flex: 1; /* Info takes 1/3 width */
+.property-location {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 20px;
 }
 
-/* Tabs Styling - ensuring visual consistency [cite: 57] */
-.tab-list {
-  display: flex;
-  border-bottom: 2px solid var(--secondary-color);
-  margin-bottom: 20px;
-}
-
-.tab {
-  padding: 10px 15px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s;
-}
-
-.tab:hover, .tab.active {
-  border-bottom: 3px solid var(--primary-color);
-  color: var(--primary-color);
-  font-weight: bold;
-}
-/* PropertyPage.css - Small Screen Layout (Hand-written media query [cite: 51]) */
-
-@media (max-width: 992px) {
-  .property-header-layout {
-    /* Stack the gallery and info vertically */
-    flex-direction: column;
-  }
-  
-  .property-gallery .thumbnail-container {
-    /* Switch thumbnails to a horizontally scrolling row if too many */
+.price-and-actions {
     display: flex;
-    overflow-x: auto;
-    gap: 10px;
-  }
-  
-  .tab-list {
-    /* Allow tabs to wrap or scroll horizontally on tiny screens */
-    flex-wrap: wrap;
-  }
-  /* Components/PropertyCard.css */
-
-.property-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: var(--card-shadow);
-  transition: transform 0.2s;
-  background-color: #fff;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.property-card:hover {
-  transform: translateY(-5px);
+.property-price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0;
 }
 
-.card-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+/* --- 2. Sections --- */
+
+.property-gallery-section,
+.property-details-tabs {
+    padding: 20px 0;
 }
 
-.card-content {
-  padding: 15px;
+.property-footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    color: #888;
 }
 
-/* Aesthetic Requirement: Use of headings and subheadings  */
-.card-content h4 {
-  font-size: 1.2em;
-  color: var(--primary-color);
-  margin-top: 0;
-  margin-bottom: 5px;
-}
+/* --- 3. Responsive Layout for Property Page --- */
 
-/* Aesthetic Requirement: Related items (price, beds, link) are grouped  */
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px dashed #eee;
-}
+/* No major layout changes are needed for the property page layout 
+   (since components like gallery/tabs are naturally stacked), 
+   but font sizes and padding should be adjusted for smaller screens. */
+
+@media screen and (max-width: 768px) { 
+    /* Adjustments for screens smaller than iPad landscape width */
+
+    .property-page-container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+    
+    .property-header h1 {
+        font-size: 1.6em;
+    }
+    
+    .price-and-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .property-price {
+        font-size: 1.4em;
+    }
+
+    .header-favourite-button {
+        /* Ensure the button is clearly visible when stacked */
+        width: 100%;
+        text-align: left;
+    }
 }

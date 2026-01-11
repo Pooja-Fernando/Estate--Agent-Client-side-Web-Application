@@ -1,4 +1,4 @@
-/* Base Styles for Aesthetics */
+
 :root {
     --primary-color: #007bff;
     --secondary-color: #f8f9fa;
@@ -30,7 +30,7 @@ body {
     padding: 20px;
 }
 
-/* --- Search Page Layout (Flex) --- */
+
 .search-layout {
     display: flex;
     gap: 30px;
@@ -72,7 +72,7 @@ body {
     gap: 20px;
 }
 
-/* Property Card Styling (Aesthetics) */
+
 .property-card {
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -87,7 +87,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* --- Property Page Tab Styles --- */
+
 .tabs-navigation button {
     padding: 10px 15px;
     margin-right: 10px;
@@ -112,7 +112,7 @@ body {
 
 /* --- Responsive Design (Small Screens) --- */
 
-/* REQUIRED LAYOUT 2: Smaller than iPad landscape width (e.g., 768px) */
+/*Smaller than iPad landscape width (e.g., 768px) */
 @media (max-width: 900px) {
     
     /* 1. Stack Search Form and Main Content */
@@ -130,7 +130,7 @@ body {
         order: 2; /* Put results and favourites second */
     }
 
-    /* 2. Stack Results and Favourites */
+    /* Stack Results and Favourites */
     .search-results-section {
         flex: auto;
     }
