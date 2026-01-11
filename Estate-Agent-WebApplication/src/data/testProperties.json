@@ -1,0 +1,98 @@
+{
+  "testCases": {
+    "singleProperty": [
+      {
+        "id": 1,
+        "type": "Apartment",
+        "price": 450000,
+        "bedrooms": 2,
+        "location": "London, Camden",
+        "description": "Modern apartment with great views",
+        "dateAdded": "2024-01-15",
+        "images": [
+          "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+          "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+        ],
+        "floorPlan": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+        "fullDescription": "A stunning modern apartment located in the heart of Camden with floor-to-ceiling windows and contemporary finishes."
+      }
+    ],
+    "multipleProperties": [
+      {
+        "id": 1,
+        "type": "House",
+        "price": 750000,
+        "bedrooms": 3,
+        "location": "London, Bromley",
+        "description": "Spacious family home with garden",
+        "dateAdded": "2024-01-10",
+        "images": [
+          "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+          "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800"
+        ],
+        "floorPlan": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+        "fullDescription": "Beautiful family home in Bromley with 3 bedrooms, modern kitchen, and spacious garden."
+      },
+      {
+        "id": 2,
+        "type": "Apartment",
+        "price": 550000,
+        "bedrooms": 2,
+        "location": "London, Putney",
+        "description": "Luxury riverside apartment",
+        "dateAdded": "2024-01-12",
+        "images": [
+          "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800",
+          "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800"
+        ],
+        "floorPlan": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+        "fullDescription": "Exclusive riverside apartment with river views and premium amenities."
+      }
+    ],
+    "emptyArray": [],
+    "edgeCases": {
+      "veryExpensive": [
+        {
+          "id": 100,
+          "type": "Mansion",
+          "price": 5000000,
+          "bedrooms": 8,
+          "location": "London, Kensington",
+          "description": "Ultra-luxury mansion",
+          "dateAdded": "2024-01-01",
+          "images": ["https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800"],
+          "floorPlan": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+          "fullDescription": "The most luxurious mansion in London with premium finishes."
+        }
+      ],
+      "veryAffordable": [
+        {
+          "id": 101,
+          "type": "Studio",
+          "price": 200000,
+          "bedrooms": 0,
+          "location": "London, Outer Zone",
+          "description": "Compact studio apartment",
+          "dateAdded": "2024-01-05",
+          "images": ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"],
+          "floorPlan": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+          "fullDescription": "Affordable studio apartment perfect for first-time buyers."
+        }
+      ],
+      "manyBedrooms": [
+        {
+          "id": 102,
+          "type": "Townhouse",
+          "price": 2000000,
+          "bedrooms": 10,
+          "location": "London, Chelsea",
+          "description": "Grand townhouse with many rooms",
+          "dateAdded": "2024-01-08",
+          "images": ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800"],
+          "floorPlan": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+          "fullDescription": "Magnificent townhouse with 10 bedrooms, perfect for large families."
+        }
+      ]
+    }
+  }
+}

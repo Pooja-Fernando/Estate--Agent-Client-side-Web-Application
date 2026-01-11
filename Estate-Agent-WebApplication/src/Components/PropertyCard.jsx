@@ -1,51 +1,74 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import FavouriteButton from './FavouriteButton'; 
-import { useFavourites } from '../Context/FavouriteContext';
-import './PropertyCard.css'; 
+import PropTypes from 'prop-types';
+import { Heart, MapPin, Bed, Calendar } from 'lucide-react';
+import './styles/PropertyCard.css';
 
-const PropertyCard = ({ property }) => {
-  
-  const { id, title, imageURL, price, shortDescription, bedrooms } = property;
-  
-  // Access the context to check if the property is a favourite
-  const { isFavourite } = useFavourites();
-  const isCurrentlyFavourite = isFavourite(id);
-
+const PropertyCard = ({ property, onClick, onAddToFavourites, onDragStart }) => {
   return (
-    // Wrap the card content in a Link to the corresponding property page
-    // The URL structure assumes React Router: /property/:id
-    <Link to={`/property/${id}`} className="property-card"> 
-      
-      {/* Property Image (7% for Display) */}
-      <div className="property-image-wrapper">
-        <img 
-          src={imageURL} 
-          alt={title} 
-          className="property-card-image" 
-        />
-        
-        {/* The Favourite Button/Icon (Method 2 for 8% mark) */}
-        {/* The FavouriteButton component will handle the click/toggle logic */}
-        <div className="favourite-overlay">
-          <FavouriteButton property={property} isFavourite={isCurrentlyFavourite} />
+    <div
+      draggable
+      onDragStart={onDragStart}
+      className="property-card"
+    >
+      <img
+        src={property.images[0]}
+        alt={property.shortDesc}
+        className="property-card-image"
+      />
+      <div className="property-card-content">
+        <div className="property-card-header">
+          <h3 className="property-price">£{property.price.toLocaleString()}</h3>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onAddToFavourites();
+            }}
+            className="property-favourite-btn"
+            title="Add to favourites"
+          >
+            <Heart size={24} />
+          </button>
         </div>
+        
+        <p className="property-description">{property.shortDesc}</p>
+        
+        <div className="property-details">
+          <div className="property-detail-item">
+            <Bed size={16} />
+            <span>{property.bedrooms} bed</span>
+          </div>
+          <div className="property-detail-item">
+            <MapPin size={16} />
+            <span>{property.location}</span>
+          </div>
+          <div className="property-detail-item">
+            <Calendar size={16} />
+            <span>{new Date(property.dateAdded).toLocaleDateString()}</span>
+          </div>
+        </div>
+        
+        <button
+          onClick={onClick}
+          className="property-details-btn"
+        >
+          View Details
+        </button>
       </div>
-      
-      <div className="property-card-info">
-        
-        {/* Price (Pleasant and effective display - 7% mark) */}
-        <p className="property-card-price">£{price.toLocaleString()}</p>
-        
-        {/* Title/Short Description */}
-        <h4 className="property-card-title">{title}</h4>
-        <p className="property-card-description">
-            {bedrooms} Bed {shortDescription}
-        </p> 
-        
-      </div>
-    </Link>
+    </div>
   );
+};
+
+PropertyCard.propTypes = {
+  property: PropTypes.shape({
+    images: PropTypes.array.isRequired,
+    shortDesc: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    bedrooms: PropTypes.number.isRequired,
+    location: PropTypes.string.isRequired,
+    dateAdded: PropTypes.string.isRequired,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+  onAddToFavourites: PropTypes.func.isRequired,
+  onDragStart: PropTypes.func.isRequired,
 };
 
 export default PropertyCard;
