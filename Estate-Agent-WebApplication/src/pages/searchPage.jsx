@@ -1,7 +1,7 @@
 import { useState, useContext, useMemo } from 'react'; 
 import SearchForm from '../Components/SearchForm';
 import SearchResults from '../Components/SearchResults'; 
-import ALL_PROPERTIES from './data/properties.json'; 
+import ALL_PROPERTIES from '../data/properties.json';
 import FavouritesList from '../Components/FavouriteList';
 import { FavouritesContext } from '../Context/FavouritesContext'; 
 
