@@ -1,8 +1,8 @@
-// Components/PropertyCard.jsx
 
 import React from 'react';
-import { useFavourites } from '../Context/FavouriteContext'; // Import the hook
-import { Link } from 'react-router-dom'; // Assuming you use React Router for linking
+import 
+import { useFavourites } from '../Context/FavouriteContext';
+import { Link } from 'react-router-dom'; 
 
 const PropertyCard = ({ property }) => {
   const { addFavourite, removeFavourite, favourites } = useFavourites();
@@ -36,7 +36,7 @@ const PropertyCard = ({ property }) => {
         {isFavourite ? '❤️ Favourited' : '☆ Favourite'}
       </button>
       
-      {/* ... (Your drag-and-drop logic for ADD will handle the drop target in FavouriteList.jsx) ... */}
+      
     </div>
   );
 };
